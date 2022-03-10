@@ -1,16 +1,6 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
-<<<<<<< HEAD
-from sqlalchemy import Column, String
-
-class State(BaseModel, Base):
-    """ State class """
-    __tablename__ = 'states'
-    name = Column(String(128), nullable=False)
-    cities = relationship('City', backref='cities',
-                          cascade="all, delete, delete-orphan") 
-=======
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Column, String, ForeignKey, Integer
 import os
@@ -38,4 +28,3 @@ class State(BaseModel, Base):
                          models.storage.all(City).items()
                          if value.state_id == self.id]
             return city_list
->>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835

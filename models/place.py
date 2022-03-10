@@ -1,18 +1,7 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
-<<<<<<< HEAD
 from sqlalchemy import Column, String, Integer, Float
-
-
-class Place(BaseModel, Base):
-    """ A place to stay """
-    __tablename__ = 'places'
-    
-    city_id = Column(String(60), nullable=False, ForeignKey('cities.id')
-    user_id = Column(String(60), nullable=False, ForeignKey('users.id')
-    name = Column(String(128),  nullable=False)
-=======
 import os
 from sqlalchemy import Float, Integer, Table, ForeignKey, String, Column
 from sqlalchemy.orm import relationship
@@ -45,19 +34,14 @@ class Place(BaseModel, Base):
     city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
     user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
     name = Column(String(128), nullable=False)
->>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835
     description = Column(String(1024), nullable=True)
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
     max_guest = Column(Integer, nullable=False, default=0)
     price_by_night = Column(Integer, nullable=False, default=0)
-<<<<<<< HEAD
     latitude = Column(Float)
     longitude = Column(Float)
     amenity_ids = []
-=======
-    latitude = Column(Float, nullable=True)
-    longitude = Column(Float, nullable=True)
 
     if os.getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place",
@@ -92,4 +76,3 @@ class Place(BaseModel, Base):
             """
             if isinstance(amenity_obj, models.Amenity):
                 self.amenities.append(amenity_obj.id)
->>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835
