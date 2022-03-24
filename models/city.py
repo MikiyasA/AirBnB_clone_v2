@@ -15,5 +15,6 @@ class City(BaseModel, Base):
     state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
     name = Column(String(128), nullable=False)
     # One2many relationship to places
+
     places = relationship("Place", backref="cities",
                           cascade="all, delete, delete-orphan")

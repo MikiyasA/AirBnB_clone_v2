@@ -3,15 +3,29 @@
 import uuid
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+<<<<<<< HEAD
+from sqlalchemy import Column, Integer, String
+
+Base = declaratibe_base()
+=======
 from sqlalchemy import Column, Integer, String, DateTime
 import models
+>>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835
 
 Base = declarative_base()
 
 class BaseModel:
+<<<<<<< HEAD
+    """A base class for all hbnb models"""
+
+    id = Column(String(60), unique=True, nullable=False, primary_key=True)
+    created_at = Column(DateTime, nuallable=False, default=(datetime.utcnow()))
+    updated_at = Column(DateTime, nuallable=False, default=(datetime.utcnow()))
+=======
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+>>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835
 
     def __init__(self, *args, **kwargs):
         """Instantiation of base model class
@@ -60,6 +74,17 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
+<<<<<<< HEAD
+        """Convert instance into dict format"""
+        dictionary = {}
+        dictionary.update(self.__dict__)
+        dictionary.update({'__class__':
+                          (str(type(self)).split('.')[-1]).split('\'')[0]})
+        dictionary['created_at'] = self.created_at.isoformat()
+        dictionary['updated_at'] = self.updated_at.isoformat()
+        dictionary.pop("_sa_instance_state", None)
+        return dictionary
+=======
         """creates dictionary of the class  and returns
         Return:
             returns a dictionary of all the key values in __dict__
@@ -76,3 +101,4 @@ class BaseModel:
     def delete(self):
         """ Deletes current instance form models.storage """
         models.storage.delete(self)
+>>>>>>> 93aec226044c69f750b41f33ba2e57ebc53b2835
