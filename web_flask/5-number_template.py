@@ -4,7 +4,8 @@ script that starts a Flask web application:
 web application must be listening on 0.0.0.0, port 5000
 """
 
-from flask import Flask
+from flask import Flask, render_template
+import numbers
 
 
 app = Flask(__name__)
@@ -23,6 +24,22 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
     return "C {}".format(text.replace('_', ' '))
+
+
+@app.route('/python/', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python(text="is cool"):
+    return "Python {}".format(text.replace('_', ' '))
+
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def number(n):
+    return "{} is a number".format(n)
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def number_template(n):
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
